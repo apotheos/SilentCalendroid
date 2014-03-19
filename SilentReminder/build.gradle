@@ -12,6 +12,10 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    compile 'org.roboguice:roboguice:2.0'
+}
+
 android {
     compileSdkVersion 18
     buildToolsVersion "17.0.0"
@@ -31,4 +35,5 @@ android {
 }
 
 dependencies {
+    compile 'com.android.support:support-v4:+'
 }
