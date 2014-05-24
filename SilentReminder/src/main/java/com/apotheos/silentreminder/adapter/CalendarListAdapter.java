@@ -31,20 +31,27 @@ public class CalendarListAdapter extends ArrayAdapter<Calendar> {
         if (v == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             v = inflater.inflate(R.layout.fragment_calendar_item, null);
+
+            ViewHolder viewHolder = new ViewHolder();
+            viewHolder.calendarNameTextView = (TextView) v.findViewById(R.id.calendarName);
+            viewHolder.accountNameTextView = (TextView) v.findViewById(R.id.calendarAccount);
+            viewHolder.calendarColorSwatchView = v.findViewById(R.id.calendarColorSwatch);
+            v.setTag(viewHolder);
         }
 
         Calendar calendar = getItem(aPosition);
 
-        if (calendar != null) {
-            TextView calendarNameTextView = (TextView) v.findViewById(R.id.calendarName);
-            TextView calendarAccountTextView = (TextView) v.findViewById(R.id.calendarAccount);
-            View calendarColorSwatchView = v.findViewById(R.id.calendarColorSwatch);
-
-            calendarNameTextView.setText(calendar.displayName);
-            calendarAccountTextView.setText(calendar.accountName);
-            calendarColorSwatchView.setBackgroundColor(calendar.color);
-        }
+        ViewHolder viewHolder = (ViewHolder) v.getTag();
+        viewHolder.calendarNameTextView.setText(calendar.displayName);
+        viewHolder.accountNameTextView.setText(calendar.accountName);
+        viewHolder.calendarColorSwatchView.setBackgroundColor(calendar.color);
 
         return v;
+    }
+
+    static class ViewHolder {
+        public TextView calendarNameTextView;
+        public TextView accountNameTextView;
+        public View calendarColorSwatchView;
     }
 }
