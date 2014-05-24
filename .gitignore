@@ -1,5 +1,6 @@
 local.properties
 SilentReminder/build/*
+/.gradle/
 
 *.iml
 *.idea
